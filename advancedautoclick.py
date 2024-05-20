@@ -9,7 +9,7 @@ clicks = 0
 delay = 1  #The average delay of the autoclick you want
 randomness = 0.5  #The randomness (how many seconds before or after the average delay it will randomly click) of the delay
 holdTime = 0.3 #The time the mouse will be held down for
-maxClicks = 3 #How many total clicks you wish to do
+maxClicks = 99999999 #How many total clicks you wish to do
 
 activationKey = 'f2' #Activation keys ie 'f1' 'esc' 'tab' '`'
 # DO NOT PUT E, IT WILL ALSO ENABLE DEBUG!
@@ -47,6 +47,10 @@ while True:
         time.sleep(holdTime) 
         pyautogui.mouseUp()
         clicks = clicks + 1
+
+        time.sleep(delay + random.uniform(-randomness, randomness))
+        if clicks >= maxClicks:
+            toggleAutoclicker()
 
         time.sleep(delay + random.uniform(-randomness, randomness))
         if clicks >= maxClicks:
