@@ -6,6 +6,7 @@ import random
 import keyboard
 
 clicks = 0
+closeOnMax = True #Wether it should close on max clicks, set it to 'False' (case sensitive) if you want it to close on max clicks
 delay = 1  #The average delay of the autoclick you want
 randomness = 0.5  #The randomness (how many seconds before or after the average delay it will randomly click) of the delay
 holdTime = 0.3 #The time the mouse will be held down for
@@ -39,19 +40,21 @@ def debug(event):
 keyboard.on_press_key(activationKey, toggleAutoclicker)
 keyboard.on_press_key('e', debug)
 
+
 while True:
-    if autoclickerActivated:
-        x, y = pyautogui.position()
+    while True:
+            if autoclickerActivated:
+                x, y = pyautogui.position()
 
-        pyautogui.mouseDown()
-        time.sleep(holdTime) 
-        pyautogui.mouseUp()
-        clicks = clicks + 1
+                pyautogui.mouseDown()
+                time.sleep(holdTime) 
+                pyautogui.mouseUp()
+                clicks = clicks + 1
 
-        time.sleep(delay + random.uniform(-randomness, randomness))
-        if clicks >= maxClicks:
-            toggleAutoclicker()
-
-        time.sleep(delay + random.uniform(-randomness, randomness))
-        if clicks >= maxClicks:
-            toggleAutoclicker()
+                time.sleep(delay + random.uniform(-randomness, randomness))
+                if clicks >= maxClicks:
+                    if closeOnMax:
+                         toggleAutoclicker()
+                    else:
+                         autoclickerActivated = False
+#For more utils please visit https://github.com/PlayerUtils/
