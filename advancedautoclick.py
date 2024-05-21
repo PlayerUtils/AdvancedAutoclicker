@@ -1,9 +1,9 @@
 #Do not touch anything without a comment next to it if you do not know what you are doing!!
 
-import pyautogui
-import time
-import random
-import keyboard
+import pyautogui #Type "pip install pyautogui" in powershell if you do not have this installed already
+import time 
+import random 
+import keyboard #Type "pip install keyboard" in powershell if you do not have this installed already
 
 clicks = 0
 closeOnMax = True #Wether it should close on max clicks, set it to 'False' (case sensitive) if you want it to close on max clicks
